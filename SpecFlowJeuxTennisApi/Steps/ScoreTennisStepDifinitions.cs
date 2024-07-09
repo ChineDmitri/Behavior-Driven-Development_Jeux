@@ -3,28 +3,42 @@ using Xunit;
 
 namespace SpecFlowJeuxTennisApi;
 
-
 [Binding]
 public class ScoreTennisStepDifinitions
 {
     private ScoreTennis _scoreTennis;
-    
-    [Given("le score initial du joueur 1 est (.*)")]
-    public void GivenLeScoreInitialDuJoueur1Est(int scoreInitial)
+
+    [Given("le score initial du joueur (.*) est (.*)")]
+    public void GivenLeScoreInitialDuJoueur1Est(int joueur, int scoreInitial)
     {
         _scoreTennis = new ScoreTennis();
-        _scoreTennis.Joueur1Score = scoreInitial;
+        if (joueur == 1)
+            _scoreTennis.Joueur1Score = scoreInitial;
+        else if (joueur == 2)
+            _scoreTennis.Joueur2Score = scoreInitial;
+        else
+            Assert.True(false, "Joueur invalide");
     }
 
-    [When("le joueur 1 marque un point")]
-    public void WhenLeJoueur1MarqueUnPoint()
+    [When("le joueur (.*) marque un point")]
+    public void WhenLeJoueur1MarqueUnPoint(int joueur)
     {
-        _scoreTennis.IncrementerJoueur1Score();
+        if (joueur == 1)
+            _scoreTennis.IncrementerJoueur1Score();
+        else if (joueur == 2)
+            _scoreTennis.IncrementerJoueur2Score();
+        else
+            Assert.True(false, "Joueur invalide");
     }
 
-    [Then("le score du joueur 1 devrait être (.*)")]
-    public void ThenLeScoreDuJoueur1DevraitEtre(int scoreFinal)
+    [Then("le score du joueur (.*) devrait être (.*)")]
+    public void ThenLeScoreDuJoueur1DevraitEtre(int joueur, int scoreFinal)
     {
-        Assert.Equal(scoreFinal, _scoreTennis.Joueur1Score);
+        if (joueur == 1)
+            Assert.Equal(scoreFinal, _scoreTennis.Joueur1Score);
+        else if (joueur == 2)
+            Assert.Equal(scoreFinal, _scoreTennis.Joueur2Score);
+        else
+            Assert.True(false, "Joueur invalide");
     }
 }
