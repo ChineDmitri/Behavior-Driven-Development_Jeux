@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowJeuxTennisApi", "SpecFlowJeuxTennisApi\SpecFlowJeuxTennisApi.csproj", "{064A2F6F-6557-4EFF-9CDF-6ACDA5D0C3D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuxTennisApi", "JeuxTennisApi\JeuxTennisApi.csproj", "{055BE510-0814-4CAA-A86D-A58173FDA68F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{064A2F6F-6557-4EFF-9CDF-6ACDA5D0C3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064A2F6F-6557-4EFF-9CDF-6ACDA5D0C3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064A2F6F-6557-4EFF-9CDF-6ACDA5D0C3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064A2F6F-6557-4EFF-9CDF-6ACDA5D0C3D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055BE510-0814-4CAA-A86D-A58173FDA68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055BE510-0814-4CAA-A86D-A58173FDA68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055BE510-0814-4CAA-A86D-A58173FDA68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055BE510-0814-4CAA-A86D-A58173FDA68F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
