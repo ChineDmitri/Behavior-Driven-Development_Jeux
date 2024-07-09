@@ -15,7 +15,7 @@ namespace JeuxTennisApi
         void Joueur2GagnePoint();
 
         // Get the current score
-        IJeuTennisApi GetScoreActuel();
+        IScoreTennis GetScoreActuel();
 
         // Get the winner of the game (if the game is over)
         string GetVainqueur();
