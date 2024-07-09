@@ -3,21 +3,21 @@ namespace JeuxTennisApi
     public interface IJeuxTennisApi
     {
         // Create a new game
-        void CreateGame(string player1Name, string player2Name);
+        public void NouveauJeu(string joueur1Nom, string joueur2Nom);
 
         // Serve the ball (start a new point)
         void Service();
 
         // Player 1 wins a point
-        void Jouer1GagnePoint();
+        void Joueur1GagnePoint();
 
         // Player 2 wins a point
-        void Jouer2GagnePoint();
+        void Joueur2GagnePoint();
 
         // Get the current score
-        TennisScore GetResult();
+        IJeuTennisApi GetScoreActuel();
 
         // Get the winner of the game (if the game is over)
-        string GetWinner();
+        string GetVainqueur();
     }
 }

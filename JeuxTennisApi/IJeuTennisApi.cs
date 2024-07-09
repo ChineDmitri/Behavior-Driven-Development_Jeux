@@ -1,6 +1,6 @@
 namespace JeuxTennisApi
 {
-    public class TennisScore
+    public class IJeuTennisApi
     {
         public int Player1Sets { get; set; }
         public int Player2Sets { get; set; }
