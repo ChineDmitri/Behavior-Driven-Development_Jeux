@@ -21,11 +21,11 @@ public class ScoreTennisStepDifinitions
     }
 
     [When("le joueur (.*) marque un point")]
-    public void WhenLeJoueur1MarqueUnPoint(int joueur)
+    public void WhenLeJoueur1MarqueUnPoint(int idJoueur)
     {
-        if (joueur == 1)
-            _scoreTennis.IncrementerJoueur1Score();
-        else if (joueur == 2)
+        if (idJoueur > 0 && idJoueur < 3)
+            _scoreTennis.IncrementerJoueurScoreById(idJoueur);
+        else if (idJoueur == 2)
             _scoreTennis.IncrementerJoueur2Score();
         else
             Assert.True(false, "Joueur invalide");

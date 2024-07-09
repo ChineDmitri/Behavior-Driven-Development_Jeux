@@ -1,73 +1,60 @@
+using System;
+
 namespace JeuxTennisApi
 {
     public class ScoreTennis : IScoreTennis
     {
-        private int _joueur1Score;
-        private int _joueur2Score;
+        private Joueur[] _joueurs;
         private int _setActuel;
         private int _jeuActuel;
 
-        public ScoreTennis()
+        public ScoreTennis(Joueur[] joueurs)
         {
-            _joueur1Score = 0;
-            _joueur2Score = 0;
-            _setActuel = 1;
-            _jeuActuel = 1;
+            if (joueurs.Length != 2 || joueurs.Length != 4)
+            {
+                throw new ArgumentException("Il doit y avoir exactement deux ou quatre joueurs.");
+            }
+
+            _joueurs = joueurs;
+
+            _setActuel = 0;
+            _jeuActuel = 0;
         }
 
-        public int Joueur1Score
+        public int JoueurScoreById(int joueurId)
         {
-            get { return _joueur1Score; }
-            set { _joueur1Score = value; }
-        }
+            if (joueurId < 1 || joueurId > 4)
+            {
+                throw new ArgumentException("JoueurId invalide.");
+            }
 
-        public int Joueur2Score
-        {
-            get { return _joueur2Score; }
-            set { _joueur2Score = value; }
+            return _joueurs[joueurId - 1].Score;
         }
 
         public int SetActuel
         {
             get { return _setActuel; }
-            set { _setActuel = value; }
         }
 
         public int JeuActuel
         {
             get { return _jeuActuel; }
-            set { _jeuActuel = value; }
         }
 
-        public void IncrementerJoueur1Score()
+        public void IncrementerJoueurScoreById(int joueurId)
         {
-            _joueur1Score++;
-            if (_joueur1Score >= 4 && _joueur1Score - _joueur2Score >= 2)
+            if (joueurId < 1 || joueurId > 4)
             {
-                _jeuActuel++;
-                _joueur1Score = 0;
-                _joueur2Score = 0;
-                if (_jeuActuel >= 6 && _jeuActuel - _jeuActuel % 2 == 0)
-                {
-                    _setActuel++;
-                    _jeuActuel = 1;
-                }
+                throw new ArgumentException("JoueurId invalide.");
             }
-        }
 
-        public void IncrementerJoueur2Score()
-        {
-            _joueur2Score++;
-            if (_joueur2Score >= 4 && _joueur2Score - _joueur1Score >= 2)
+            int index = joueurId - 1;
+            _joueurs[index].IncrementerScore();
+
+            if (_joueurs[index].Score == 0 && _joueurs[0].Score != _joueurs[1].Score) // Joueur a gagné la partie
             {
                 _jeuActuel++;
-                _joueur1Score = 0;
-                _joueur2Score = 0;
-                if (_jeuActuel >= 6 && _jeuActuel - _jeuActuel % 2 == 0)
-                {
-                    _setActuel++;
-                    _jeuActuel = 1;
-                }
+                // Gérer la logique de set et de match ici
             }
         }
     }
