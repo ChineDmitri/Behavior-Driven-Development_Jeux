@@ -4,33 +4,38 @@ namespace JeuxTennisApi
 {
     public class Joueur
     {
-        private int[] points = { 0, 15, 30, 40 };
-        private int _scoreIndex;
-        public string Nom { get; private set; }
-        public string Prenom { get; private set; }
+        public static int[] points = { 0, 15, 30, 40 };
+        public int JeuxScoreIndex;
+        public int JeuxGagnes;
+        public int SetsGagnes;
+
+        public string Nom;
+        public string Prenom;
 
         public Joueur(string nom, string prenom)
         {
             Nom = nom;
             Prenom = prenom;
-            _scoreIndex = 0;
+            JeuxScoreIndex = 0;
+            JeuxGagnes = 0;
+            SetsGagnes = 0;
         }
 
-        public int Score
+        public int ScoreJeu
         {
-            get { return points[_scoreIndex]; }
+            get { return points[JeuxScoreIndex]; }
         }
 
         public void IncrementerScore()
         {
-            if (_scoreIndex < points.Length - 1)
+            if (JeuxScoreIndex < points.Length - 1)
             {
-                _scoreIndex++;
+                JeuxScoreIndex++;
             }
-            else if (_scoreIndex == points.Length - 1)
+            else if (JeuxScoreIndex == points.Length - 1)
             {
                 // Supposons qu'un joueur gagne la partie après avoir atteint 40 points et marqué encore un point.
-                _scoreIndex = 0; // Réinitialiser le score après avoir gagné une partie.
+                JeuxScoreIndex = 0; // Réinitialiser le score après avoir gagné une partie.
             }
         }
     }

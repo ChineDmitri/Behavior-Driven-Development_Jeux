@@ -6,39 +6,38 @@ namespace SpecFlowJeuxTennisApi;
 [Binding]
 public class ScoreTennisStepDifinitions
 {
-    private ScoreTennis _scoreTennis;
+    private JeuxTennis jeuxTennis;
+    private ScoreTennis scoreTennis;
 
-    [Given("le score initial du joueur (.*) est (.*)")]
-    public void GivenLeScoreInitialDuJoueur1Est(int joueur, int scoreInitial)
+    [Given(@"le score initial du joueur (.*) est de (.*)")]
+    public void GivenLeScoreInitialDuJoueur1Est(int idJoueur, int scoreInitial)
     {
-        _scoreTennis = new ScoreTennis();
-        if (joueur == 1)
-            _scoreTennis.Joueur1Score = scoreInitial;
-        else if (joueur == 2)
-            _scoreTennis.Joueur2Score = scoreInitial;
-        else
-            Assert.True(false, "Joueur invalide");
+        Joueur joueur1 = new Joueur("Federrer", "Roger");
+        Joueur joueur2 = new Joueur("Nadal", "Rafael");
+        Joueur[] joueurs = { joueur1, joueur2 };
+
+        scoreTennis = new ScoreTennis(joueurs);
+        jeuxTennis = new JeuxTennis(scoreTennis);
+
+        jeuxTennis.Score
+            .GetJouerParId(idJoueur).JeuxScoreIndex = new List<int>(Joueur.points).IndexOf(scoreInitial);
     }
 
-    [When("le joueur (.*) marque un point")]
+    [When(@"le joueur (.*) marque un point")]
     public void WhenLeJoueur1MarqueUnPoint(int idJoueur)
     {
-        if (idJoueur > 0 && idJoueur < 3)
-            _scoreTennis.IncrementerJoueurScoreById(idJoueur);
-        else if (idJoueur == 2)
-            _scoreTennis.IncrementerJoueur2Score();
-        else
-            Assert.True(false, "Joueur invalide");
+        jeuxTennis.Score.IncrementerJoueurScoreJeuParId(idJoueur);
     }
 
-    [Then("le score du joueur (.*) devrait être (.*)")]
-    public void ThenLeScoreDuJoueur1DevraitEtre(int joueur, int scoreFinal)
+    [Then(@"le score du joueur (.*) devrait être de (.*)")]
+    public void ThenLeScoreDuJoueur1DevraitEtre(int idJoueur, int scoreAttendu)
     {
-        if (joueur == 1)
-            Assert.Equal(scoreFinal, _scoreTennis.Joueur1Score);
-        else if (joueur == 2)
-            Assert.Equal(scoreFinal, _scoreTennis.Joueur2Score);
-        else
-            Assert.True(false, "Joueur invalide");
+        Assert.Equal(scoreAttendu, jeuxTennis.GetScore().GetJouerParId(idJoueur).ScoreJeu);
+    }
+
+    [Then(@"le joueur (.*) gagne le jeu")]
+    public void ThenLeJoueurGagneLeJeu(int p0)
+    {
+        ScenarioContext.StepIsPending();
     }
 }

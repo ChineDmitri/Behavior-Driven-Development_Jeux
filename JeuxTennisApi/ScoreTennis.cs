@@ -1,59 +1,50 @@
 using System;
+using System.Collections.Generic;
 
 namespace JeuxTennisApi
 {
-    public class ScoreTennis : IScoreTennis
+    public class ScoreTennis
     {
-        private Joueur[] _joueurs;
-        private int _setActuel;
-        private int _jeuActuel;
+        public Joueur[] Joueurs;
+        public SetTennis[] Sets;
+        public SetTennis SetActuel { get; private set; }
+        public JeuTennis JeuActuel { get; private set; }
+
 
         public ScoreTennis(Joueur[] joueurs)
         {
-            if (joueurs.Length != 2 || joueurs.Length != 4)
+            if (joueurs.Length != 2)
             {
-                throw new ArgumentException("Il doit y avoir exactement deux ou quatre joueurs.");
+                throw new ArgumentException("Il doit y avoir exactement deux joueurs.");
             }
 
-            _joueurs = joueurs;
-
-            _setActuel = 0;
-            _jeuActuel = 0;
+            Joueurs = joueurs;
+            Sets = new SetTennis[3];
         }
 
-        public int JoueurScoreById(int joueurId)
+        public Joueur GetJouerParId(int joueurId)
         {
-            if (joueurId < 1 || joueurId > 4)
+            if (joueurId < 1 || joueurId > 2)
             {
                 throw new ArgumentException("JoueurId invalide.");
             }
 
-            return _joueurs[joueurId - 1].Score;
+            return Joueurs[joueurId - 1];
         }
 
-        public int SetActuel
+        public void IncrementerJoueurScoreJeuParId(int joueurId)
         {
-            get { return _setActuel; }
-        }
-
-        public int JeuActuel
-        {
-            get { return _jeuActuel; }
-        }
-
-        public void IncrementerJoueurScoreById(int joueurId)
-        {
-            if (joueurId < 1 || joueurId > 4)
+            if (joueurId > 2 || joueurId < 1)
             {
                 throw new ArgumentException("JoueurId invalide.");
             }
 
             int index = joueurId - 1;
-            _joueurs[index].IncrementerScore();
+            Joueurs[index].IncrementerScore();
 
-            if (_joueurs[index].Score == 0 && _joueurs[0].Score != _joueurs[1].Score) // Joueur a gagné la partie
+            if (Joueurs[index].ScoreJeu == 0 && Joueurs[0].ScoreJeu != Joueurs[1].ScoreJeu) // Joueur a gagné la partie
             {
-                _jeuActuel++;
+                // _jeuActuel++;
                 // Gérer la logique de set et de match ici
             }
         }

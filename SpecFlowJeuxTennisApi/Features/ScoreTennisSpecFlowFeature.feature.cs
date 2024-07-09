@@ -40,7 +40,7 @@ namespace SpecFlowJeuxTennisApi.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ScoreTennisSpecFlowFeature", "Feature: ScoreTennis", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ScoreTennisSpecFlowFeature", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -88,7 +88,7 @@ namespace SpecFlowJeuxTennisApi.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Incrementer le score du joueur 1", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+#line 3
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -108,14 +108,14 @@ namespace SpecFlowJeuxTennisApi.Features
             else
             {
                 this.ScenarioStart();
-#line 6
-  testRunner.Given("le score initial du joueur 1 est 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 4
+  testRunner.Given("le score initial du joueur 1 est de 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 7
+#line 5
   testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 8
-  testRunner.Then("le score du joueur 1 devrait être 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 6
+  testRunner.Then("le score du joueur 1 devrait être de 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -129,7 +129,7 @@ namespace SpecFlowJeuxTennisApi.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Incrementer le score du joueur 2", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
+#line 8
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -149,14 +149,55 @@ namespace SpecFlowJeuxTennisApi.Features
             else
             {
                 this.ScenarioStart();
-#line 11
-  testRunner.Given("le score initial du joueur 2 est 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 9
+  testRunner.Given("le score initial du joueur 2 est de 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 12
+#line 10
   testRunner.When("le joueur 2 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 11
+  testRunner.Then("le score du joueur 2 devrait être de 30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Joueur 1 gagne un jeu")]
+        [Xunit.TraitAttribute("FeatureTitle", "ScoreTennisSpecFlowFeature")]
+        [Xunit.TraitAttribute("Description", "Joueur 1 gagne un jeu")]
+        public virtual void Joueur1GagneUnJeu()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Joueur 1 gagne un jeu", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 13
-  testRunner.Then("le score du joueur 2 devrait être 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 14
+  testRunner.Given("le score initial du joueur 2 est de 30", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 15
+  testRunner.When("le joueur 1 marque un point", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 16
+  testRunner.Then("le joueur 1 gagne le jeu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
