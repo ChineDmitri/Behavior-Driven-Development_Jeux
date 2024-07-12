@@ -30,16 +30,44 @@ namespace JeuxTennisApi
         {
             Joueur joueur = Jeux.Last().getJoueurById(idJoueur);
             Jeu jeu = Jeux.Last();
-            joueur.IncrementerJeuScore();
-            
-            if (joueur.GetJeuScore() == 40 && !jeu.EstEgalite)
+
+            if (joueur.GetJeuScore() == 40 &&
+                !jeu.Avantage.EstEgalite &&
+                joueurs[0].GetJeuScore() != joueurs[1].GetJeuScore())
             {
                 GagnerJeu(joueur);
             }
 
+            if (joueurs[0].GetJeuScore() == 40 && joueurs[1].GetJeuScore() == 40)
+            {
+                jeu.Avantage.EstEgalite = true;
+            }
+
+            if (!jeu.Avantage.EstEgalite)
+            {
+                joueur.IncrementerJeuScore();
+            }
+            else
+            {
+                if (jeu.Avantage.Avantager == joueur)
+                {
+                    GagnerJeu(joueur);
+                }
+
+                if (jeu.Avantage.Avantager == null)
+                {
+                    jeu.Avantage.Avantager = joueur;
+                }
+                else
+                {
+                    jeu.Avantage.Avantager = null;
+                }
+            }
+
+
             return joueur.GetJeuScore();
         }
-        
+
         private void GagnerJeu(Joueur joueur)
         {
             Jeux.Last().SetVainqueur(joueur);

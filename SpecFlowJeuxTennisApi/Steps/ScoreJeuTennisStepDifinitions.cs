@@ -7,24 +7,38 @@ namespace SpecFlowJeuxTennisApi;
 public class ScoreJeuTennisStepDifinitions
 {
     JeuTennis _jeuTennis;
-    // Joueur _joueur1 = new Joueur(1, "Djokovic", "Novak");
-    // Joueur _joueur2 = new Joueur(2, "Nadal", "Rafael");
+    Joueur _joueur1 = new Joueur(1, "Djokovic", "Novak");
+    Joueur _joueur2 = new Joueur(2, "Nadal", "Rafael");
 
     [Given(@"le score initial du joueur (.*) est de (.*)")]
     public void GivenLeScoreInitialDuJoueurEst(int idJoueur, int scoreInitial)
     {
-        Joueur joueurUnderTest = new Joueur(idJoueur, "Nadal", "Rafael");
-        Joueur joueurSecond = new Joueur(11, "Djokovic", "Novak");
-        _jeuTennis = new JeuTennis(new Joueur[] { joueurUnderTest, joueurSecond });
-        
+        _jeuTennis = new JeuTennis(new Joueur[] { _joueur1, _joueur2 });
+
         Joueur joueur = _jeuTennis.GetJoueurById(idJoueur);
         int indexScoreJeu = Array.IndexOf(Jeu.POINTS, scoreInitial);
+        int scoreUnderTest = 0;
         for (int i = 0; i < indexScoreJeu; i++)
         {
-            _jeuTennis.GagnerPointJeu(idJoueur);
+            scoreUnderTest = _jeuTennis.GagnerPointJeu(idJoueur);
         }
 
         Assert.Equal(scoreInitial, joueur.GetJeuScore());
+        Assert.Equal(scoreInitial, scoreUnderTest);
+    }
+
+    [Given(@"les scores initial des joueurs (.*) et (.*) est de (.*)")]
+    public void GivenLeScoreInitialDuJoueurEst(int idJoueur1, int idJoueur2, int scoreInitial)
+    {
+        _jeuTennis = new JeuTennis(new Joueur[] { _joueur1, _joueur2 });
+
+        Joueur j1 = _jeuTennis.Jeux.Last().getJoueurById(idJoueur1);
+        Joueur j2 = _jeuTennis.Jeux.Last().getJoueurById(idJoueur2);
+        j1.setMaxJeuScore();
+        j2.setMaxJeuScore();
+
+        Assert.Equal(scoreInitial, j1.GetJeuScore());
+        Assert.Equal(scoreInitial, j2.GetJeuScore());
     }
 
     [When(@"le joueur (.*) marque un point")]
@@ -46,20 +60,24 @@ public class ScoreJeuTennisStepDifinitions
     {
         Joueur joueur = _jeuTennis.GetJoueurById(joueurId);
         Joueur jouerExpected = _jeuTennis.Jeux[_jeuTennis.Jeux.Count - 2].GetVainqueur();
-        
+
         Assert.Equal(jouerExpected, joueur);
-        
     }
 
-    [Then(@"le joueur (.*) a l'avantage")]
-    public void ThenLeJoueurALavantage(int p0)
+    [
+        When(@"le joueur (.*) a l'avantage"),
+        Then(@"le joueur (.*) a l'avantage")
+    ]
+    public void ThenLeJoueurALavantage(int idJoueur)
     {
-        ScenarioContext.StepIsPending();
+        Joueur joueur = _jeuTennis.GetJoueurById(idJoueur);
+        Assert.True(_jeuTennis.Jeux.Last().Avantage.Avantager == joueur);
     }
 
-    [Given(@"le joueur (.*) a l'avantage")]
-    public void GivenLeJoueurALavantage(int p0)
+    [Then(@"le jeux est en égalité et jeurs n'ont pas l'avantage")]
+    public void ThenLeJeuxEstEnEgalite()
     {
-        ScenarioContext.StepIsPending();
+        Assert.Equal(_jeuTennis.Jeux.Last().Avantage.EstEgalite, true);
+        Assert.Equal(_jeuTennis.Jeux.Last().Avantage.Avantager, null);
     }
 }

@@ -11,6 +11,11 @@ namespace JeuxTennisApi
 
         public int indexJeuScore { get; private set; } = 0;
 
+        public void setMaxJeuScore()
+        {
+            this.indexJeuScore = 3;
+        }
+
         public Joueur(int id, string nom, string prenom)
         {
             Id = id;

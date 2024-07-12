@@ -8,7 +8,7 @@ namespace JeuxTennisApi
         public static readonly int[] POINTS = { 0, 15, 30, 40 };
         private Joueur[] joueurs;
         private Joueur vainqueur;
-        public bool EstEgalite { get; private set; } = false;
+        public Avantage Avantage { get; set; } = new Avantage();
         
         public Jeu(Joueur[] joueurs)
         {
