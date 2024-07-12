@@ -12,8 +12,8 @@ Feature: ScoreJeuTennisSpecFlowFeature
 		
 	Scenario: Joueur 1 gagne un jeu
 		Given le score initial du joueur 2 est de 30
-		When le joueur 1 marque un point
-		Then le joueur 1 gagne le jeu
+		When le joueur 2 marque un point
+		Then le joueur 2 gagne le jeu
 		
 	Scenario: Joueur 1 et joueur 2 ont un score de 40
 		Given le score initial du joueur 2 est de 40
