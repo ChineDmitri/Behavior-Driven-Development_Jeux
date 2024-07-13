@@ -9,6 +9,7 @@ namespace JeuxTennisApi
         private Joueur[] joueurs;
         private Joueur vainqueur;
         public Avantage Avantage { get; set; } = new Avantage();
+        public TieBreak TieBreak { get; set; } = new TieBreak();
         
         public Jeu(Joueur[] joueurs)
         {
@@ -19,6 +20,11 @@ namespace JeuxTennisApi
         public Joueur getJoueurById(int idJoueur)
         {
             return joueurs.First(joueur => joueur.Id == idJoueur);
+        }
+        
+        public Joueur[] getAllJoueurs()
+        {
+            return joueurs;
         }
         
         public void SetVainqueur(Joueur joueur)

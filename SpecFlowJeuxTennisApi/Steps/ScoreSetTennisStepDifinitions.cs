@@ -6,12 +6,11 @@ namespace SpecFlowJeuxTennisApi;
 [Binding]
 public class ScoreSetTennisStepDifinitions
 {
-    
     ScoreJeuTennisStepDifinitions superTest = new ScoreJeuTennisStepDifinitions();
     // JeuTennis _jeuTennis;
     // Joueur _joueur1 = new Joueur(1, "Djokovic", "Novak");
     // Joueur _joueur2 = new Joueur(2, "Nadal", "Rafael");
-    
+
     [Given(@"Scone initial du set pour Joueur (.*) est (.*) et Joueur (.*) est (.*)")]
     public void GivenSconeInitialDeSetPourJoueurEstEtJoueurEst(
         int idJoueur1,
@@ -21,7 +20,7 @@ public class ScoreSetTennisStepDifinitions
     {
         Joueur[] joueurs = new Joueur[] { superTest._joueur1, superTest._joueur2 };
         superTest._jeuTennis = new JeuTennis(joueurs);
-        
+
         // Set set = new Set();
         // set.Jeux.Add(base._jeuTennis.getSetActuel().Jeux.Last());
         superTest._jeuTennis.getSetActuel().Jeux.Last().SetVainqueur(superTest._joueur1);
@@ -31,20 +30,20 @@ public class ScoreSetTennisStepDifinitions
             j1.SetVainqueur(superTest._joueur1);
             superTest._jeuTennis.getSetActuel().Jeux.Add(j1);
         }
-        
+
         for (int i = 0; i < scoreJeuJ2; i++)
         {
             Jeu j2 = new Jeu(joueurs);
             j2.SetVainqueur(superTest._joueur2);
             superTest._jeuTennis.getSetActuel().Jeux.Add(j2);
         }
-        
+
         superTest._jeuTennis.getSetActuel().Jeux.Add(new Jeu(joueurs));
         // base._jeuTennis.Sets.Add(set);
-        
+
         Assert.Equal(superTest._jeuTennis.getSetActuel().Jeux.Count, scoreJeuJ1 + scoreJeuJ2 + 1);
     }
-    
+
     [Then(@"le set a gagné le joueur (.*)")]
     public void ThenLeSetAGagneLeJoueur(int idJoueur1)
     {
@@ -52,8 +51,8 @@ public class ScoreSetTennisStepDifinitions
         int indexSetAcuel = superTest._jeuTennis.Sets.IndexOf(superTest._jeuTennis.getSetActuel());
         Assert.Equal(superTest._jeuTennis.Sets[indexSetAcuel - 1].Vainqueur, joueur);
     }
-    
-    [Given(@"dans un set le score initial du joueur (.*) est de (.*)")]
+
+    [Given(@"dans un set le score du jeu initial du joueur (.*) est de (.*)")]
     public void GivenDansUnSetLeScoreInitialDuJoueurEstDe(int idJoueur, int scoreInitial)
     {
         Joueur joueur = superTest._jeuTennis.GetJoueurById(idJoueur);
@@ -63,14 +62,20 @@ public class ScoreSetTennisStepDifinitions
         {
             scoreUnderTest = superTest._jeuTennis.GagnerPointJeu(idJoueur);
         }
-    
+
         Assert.Equal(scoreInitial, joueur.GetJeuScore());
         Assert.Equal(scoreInitial, scoreUnderTest);
     }
-    
+
     [When(@"dans un set le joueur (.*) marque un point")]
     public void WhenDansUnSetLeJoueurMarqueUnPoint(int idJoueur)
     {
         superTest.WhenLeJoueurMarqueUnPoint(idJoueur);
+    }
+
+    [Then(@"le set est en tie break")]
+    public void ThenLeSetEstEnTieBreak()
+    {
+        Assert.True(superTest._jeuTennis.getSetActuel().Jeux.Last().TieBreak.estTieBreak);
     }
 }

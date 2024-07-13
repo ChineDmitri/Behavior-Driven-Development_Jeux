@@ -10,6 +10,7 @@ namespace JeuxTennisApi
         public string Prenom { get; private set; }
 
         public int indexJeuScore { get; private set; } = 0;
+        public int scoreTieBreak { get; set; } = 0;
 
         public void setMaxJeuScore()
         {

@@ -19,7 +19,11 @@ namespace JeuxTennisApi
 
         private void NextJeu()
         {
-            setActuel.Jeux.Add(new Jeu(joueurs));
+            Jeu jeu = new Jeu(joueurs);
+            jeu.TieBreak.check(setActuel);
+            
+            setActuel.Jeux.Add(jeu);
+            
         }
 
         private void NextSet()
@@ -40,6 +44,7 @@ namespace JeuxTennisApi
             Joueur joueur = setActuel.Jeux.Last().getJoueurById(idJoueur);
             Jeu jeu = setActuel.Jeux.Last();
 
+
             if (joueur.GetJeuScore() == 40 &&
                 !jeu.Avantage.EstEgalite &&
                 joueurs[0].GetJeuScore() != joueurs[1].GetJeuScore())
@@ -48,7 +53,6 @@ namespace JeuxTennisApi
 
                 return joueur.GetJeuScore();
             }
-
 
             if (joueurs[0].GetJeuScore() == 40 && joueurs[1].GetJeuScore() == 40)
             {
@@ -82,10 +86,20 @@ namespace JeuxTennisApi
 
         private void GagnerJeu(Joueur joueur)
         {
-            setActuel.Jeux.Last().SetVainqueur(joueur);
+            Jeu jeu = setActuel.Jeux.Last();
+
+            jeu.SetVainqueur(joueur);
             foreach (Joueur j in joueurs)
             {
                 j.ResetJeuScore();
+            }
+
+            
+
+            if (jeu.TieBreak.estTieBreak)
+            {
+                joueur.scoreTieBreak++;
+                // return joueur.scoreTieBreak;
             }
 
             Joueur vainqueur = setActuel.SetVainqueur();
