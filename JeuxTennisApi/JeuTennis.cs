@@ -20,14 +20,22 @@ namespace JeuxTennisApi
         private void NextJeu()
         {
             Jeu jeu = new Jeu(joueurs);
-            jeu.TieBreak.check(setActuel);
+            setActuel.TieBreak.check(setActuel);
             
             setActuel.Jeux.Add(jeu);
             
+            foreach (Joueur joueur in joueurs)
+            {
+                joueur.scoreTieBreak = 0;
+            }
         }
 
         private void NextSet()
         {
+            foreach (Joueur j in joueurs)
+            {
+                j.scoreTieBreak = 0;
+            }
             int indexSetActuel = Sets.IndexOf(setActuel);
             // Sets.Add(setActuel = new Set());
             setActuel = Sets[indexSetActuel + 1];
@@ -42,6 +50,29 @@ namespace JeuxTennisApi
         public int GagnerPointJeu(int idJoueur)
         {
             Joueur joueur = setActuel.Jeux.Last().getJoueurById(idJoueur);
+            
+            // if (setActuel.TieBreak.estTieBreak)
+            // {
+            //     joueur.scoreTieBreak++;
+            //     
+            //     if (joueurs.Count(j => j.scoreTieBreak >= 7) >= 2)
+            //     {
+            //         NextSet();
+            //     }
+            //     return joueur.scoreTieBreak;
+            // }
+            if (setActuel.TieBreak.estTieBreak)
+            {
+                joueur.scoreTieBreak++;
+
+                Joueur estGagnant = setActuel.SetVainqueur();
+                if (estGagnant != null)
+                {
+                    NextSet();
+                }
+                return joueur.scoreTieBreak;
+            }
+            
             Jeu jeu = setActuel.Jeux.Last();
 
 
@@ -96,7 +127,7 @@ namespace JeuxTennisApi
 
             
 
-            if (jeu.TieBreak.estTieBreak)
+            if (setActuel.TieBreak.estTieBreak)
             {
                 joueur.scoreTieBreak++;
                 // return joueur.scoreTieBreak;

@@ -9,7 +9,7 @@ namespace JeuxTennisApi
         private Joueur[] joueurs;
         private Joueur vainqueur;
         public Avantage Avantage { get; set; } = new Avantage();
-        public TieBreak TieBreak { get; set; } = new TieBreak();
+       
         
         public Jeu(Joueur[] joueurs)
         {

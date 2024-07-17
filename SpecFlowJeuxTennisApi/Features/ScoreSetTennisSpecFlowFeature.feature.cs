@@ -156,7 +156,7 @@ namespace SpecFlowJeuxTennisApi.Features
             {
                 this.ScenarioStart();
 #line 11
-        testRunner.Given("Scone initial du set pour Joueur 1 est 6 et Joueur 1 est 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("Scone initial du set pour Joueur 2 est 6 et Joueur 1 est 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 12
         testRunner.And("dans un set le score du jeu initial du joueur 1 est de 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -169,6 +169,12 @@ namespace SpecFlowJeuxTennisApi.Features
 #line hidden
 #line 15
         testRunner.Then("le set est en tie break", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 16
+        testRunner.And("le score de jouer 1 en tie break est 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+        testRunner.And("le score de jouer 2 en tie break est 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -73,9 +73,28 @@ public class ScoreSetTennisStepDifinitions
         superTest.WhenLeJoueurMarqueUnPoint(idJoueur);
     }
 
-    [Then(@"le set est en tie break")]
+    [
+        Then(@"le set est en tie break"),
+        Given(@"le set est en tie break")
+    ]
     public void ThenLeSetEstEnTieBreak()
     {
-        Assert.True(superTest._jeuTennis.getSetActuel().Jeux.Last().TieBreak.estTieBreak);
+        Assert.True(superTest._jeuTennis.getSetActuel().TieBreak.estTieBreak);
+    }
+
+    [Then(@"le score de jouer (.*) en tie break est (.*)")]
+    public void ThenLeScoreDeJouerEnTieBreakEst(int idJoueur, int tieBreakScore)
+    {
+        Assert.Equal(superTest._jeuTennis.getSetActuel().Jeux.Last().getJoueurById(idJoueur).scoreTieBreak,
+            tieBreakScore);
+    }
+
+    [When(@"dans un set le joueur (.*) marque (.*) points")]
+    public void WhenDansUnSetLeJoueurMarquePoints(int idJoueur, int countPoints)
+    {
+        for (int i = 0; i < countPoints; i++)
+        {
+            superTest.WhenLeJoueurMarqueUnPoint(idJoueur);
+        }
     }
 }
