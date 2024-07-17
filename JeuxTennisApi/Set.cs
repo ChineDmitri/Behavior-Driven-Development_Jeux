@@ -6,7 +6,7 @@ namespace JeuxTennisApi
 {
     public class Set
     {
-        public readonly List<Jeu> Jeux = new List<Jeu>();
+        public List<Jeu> Jeux { get; } = new List<Jeu>();
 
         public Joueur Vainqueur { get; set; }
 

@@ -19,7 +19,10 @@ public class ScoreSetTennisStepDifinitions
         int scoreJeuJ2)
     {
         Joueur[] joueurs = new Joueur[] { superTest._joueur1, superTest._joueur2 };
-        superTest._jeuTennis = new JeuTennis(joueurs);
+        if (superTest._jeuTennis == null)
+        {
+            superTest._jeuTennis = new JeuTennis(joueurs);
+        }
 
         // Set set = new Set();
         // set.Jeux.Add(base._jeuTennis.getSetActuel().Jeux.Last());
@@ -97,4 +100,12 @@ public class ScoreSetTennisStepDifinitions
             superTest.WhenLeJoueurMarqueUnPoint(idJoueur);
         }
     }
+
+    [Then(@"le vanqueur du match est le joueur (.*)")]
+    public void ThenLeVanqueurDuMatchEstLeJoueur(int idJoueur)
+    {
+        Assert.NotNull(superTest._jeuTennis.vainqueurMatch);
+        Assert.Equal(superTest._jeuTennis.vainqueurMatch, superTest._jeuTennis.GetJoueurById(idJoueur));
+    }
+
 }

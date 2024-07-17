@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,7 @@ namespace JeuxTennisApi
         public readonly List<Set> Sets = new List<Set> { new Set(), new Set(), new Set() };
         private Set setActuel;
         private Joueur[] joueurs;
+        public Joueur vainqueurMatch;
 
         public JeuTennis(Joueur[] joueurs)
         {
@@ -21,9 +23,9 @@ namespace JeuxTennisApi
         {
             Jeu jeu = new Jeu(joueurs);
             setActuel.TieBreak.check(setActuel);
-            
+
             setActuel.Jeux.Add(jeu);
-            
+
             foreach (Joueur joueur in joueurs)
             {
                 joueur.scoreTieBreak = 0;
@@ -32,10 +34,31 @@ namespace JeuxTennisApi
 
         private void NextSet()
         {
+            if (this.vainqueurMatch != null)
+            {
+                throw new ApplicationException("Le match est déjà fini vainqueur du match est " +
+                                               this.vainqueurMatch.Nom +
+                                               " " + this.vainqueurMatch.Prenom);
+            }
+
+            this.EstFinit();
+
+            if (this.vainqueurMatch != null)
+            {
+                return;
+            }
+
+
+            if (vainqueurMatch != null)
+            {
+                this.vainqueurMatch = vainqueurMatch;
+            }
+
             foreach (Joueur j in joueurs)
             {
                 j.scoreTieBreak = 0;
             }
+
             int indexSetActuel = Sets.IndexOf(setActuel);
             // Sets.Add(setActuel = new Set());
             setActuel = Sets[indexSetActuel + 1];
@@ -50,7 +73,7 @@ namespace JeuxTennisApi
         public int GagnerPointJeu(int idJoueur)
         {
             Joueur joueur = setActuel.Jeux.Last().getJoueurById(idJoueur);
-            
+
             // if (setActuel.TieBreak.estTieBreak)
             // {
             //     joueur.scoreTieBreak++;
@@ -70,9 +93,10 @@ namespace JeuxTennisApi
                 {
                     NextSet();
                 }
+
                 return joueur.scoreTieBreak;
             }
-            
+
             Jeu jeu = setActuel.Jeux.Last();
 
 
@@ -125,7 +149,6 @@ namespace JeuxTennisApi
                 j.ResetJeuScore();
             }
 
-            
 
             if (setActuel.TieBreak.estTieBreak)
             {
@@ -145,6 +168,27 @@ namespace JeuxTennisApi
         public Set getSetActuel()
         {
             return setActuel;
+        }
+
+        public void EstFinit()
+        {
+            int setAvecVainqueur = Sets.Count(set => set.Vainqueur != null);
+
+            if (setAvecVainqueur >= 2)
+            {
+                int cj1 = Sets.Count(set => set.Vainqueur == joueurs[0]);
+                int cj2 = Sets.Count(set => set.Vainqueur == joueurs[1]);
+
+                if (cj1 == 2)
+                {
+                    this.vainqueurMatch = joueurs[0];
+                }
+
+                if (cj2 == 2)
+                {
+                    this.vainqueurMatch = joueurs[1];
+                }
+            }
         }
     }
 }
