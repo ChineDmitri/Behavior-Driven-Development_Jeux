@@ -44,7 +44,8 @@ public class ScoreSetTennisStepDifinitions
         superTest._jeuTennis.getSetActuel().Jeux.Add(new Jeu(joueurs));
         // base._jeuTennis.Sets.Add(set);
 
-        Assert.Equal(superTest._jeuTennis.getSetActuel().Jeux.Count, scoreJeuJ1 + scoreJeuJ2 + 1);
+        int totalJeux = scoreJeuJ1 + scoreJeuJ2 + 1;
+        Assert.Equal(superTest._jeuTennis.getSetActuel().Jeux.Count, totalJeux);
     }
 
     [Then(@"le set a gagné le joueur (.*)")]

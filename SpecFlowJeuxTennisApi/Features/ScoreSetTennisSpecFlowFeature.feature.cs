@@ -127,14 +127,14 @@ namespace SpecFlowJeuxTennisApi.Features
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Ser arrive en tie break")]
+        [Xunit.SkippableFactAttribute(DisplayName="Set arrive en tie break")]
         [Xunit.TraitAttribute("FeatureTitle", "ScoreSetTennisSpecFlowFeature")]
-        [Xunit.TraitAttribute("Description", "Ser arrive en tie break")]
-        public virtual void SerArriveEnTieBreak()
+        [Xunit.TraitAttribute("Description", "Set arrive en tie break")]
+        public virtual void SetArriveEnTieBreak()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Ser arrive en tie break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set arrive en tie break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 10
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -175,6 +175,53 @@ namespace SpecFlowJeuxTennisApi.Features
 #line hidden
 #line 17
         testRunner.And("le score de jouer 2 en tie break est 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Set gagné en tie break")]
+        [Xunit.TraitAttribute("FeatureTitle", "ScoreSetTennisSpecFlowFeature")]
+        [Xunit.TraitAttribute("Description", "Set gagné en tie break")]
+        public virtual void SetGagneEnTieBreak()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set gagné en tie break", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 19
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 20
+        testRunner.Given("Scone initial du set pour Joueur 2 est 6 et Joueur 1 est 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 21
+        testRunner.And("dans un set le score du jeu initial du joueur 1 est de 15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+        testRunner.And("dans un set le score du jeu initial du joueur 2 est de 40", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+        testRunner.When("dans un set le joueur 2 marque 8 points", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
+        testRunner.Then("le set a gagné le joueur 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

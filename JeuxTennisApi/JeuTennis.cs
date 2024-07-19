@@ -62,6 +62,7 @@ namespace JeuxTennisApi
             int indexSetActuel = Sets.IndexOf(setActuel);
             // Sets.Add(setActuel = new Set());
             setActuel = Sets[indexSetActuel + 1];
+            // NextJeu();
             // setActuel.Jeux.Add(new Jeu(joueurs));
         }
 
@@ -91,9 +92,9 @@ namespace JeuxTennisApi
                 Joueur estGagnant = setActuel.SetVainqueur();
                 if (estGagnant != null)
                 {
-                    NextSet();
+                    GagnerJeu(estGagnant);
                 }
-
+                
                 return joueur.scoreTieBreak;
             }
 
@@ -152,7 +153,7 @@ namespace JeuxTennisApi
 
             if (setActuel.TieBreak.estTieBreak)
             {
-                joueur.scoreTieBreak++;
+                // joueur.scoreTieBreak++;
                 // return joueur.scoreTieBreak;
             }
 

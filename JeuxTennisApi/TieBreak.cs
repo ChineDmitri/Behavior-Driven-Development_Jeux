@@ -28,7 +28,7 @@ namespace JeuxTennisApi
             {
                 try
                 {
-                    var joueur = j.getJoueurById(1);
+                    var joueur = j.getJoueurById(2);
                     return joueur != null && j.GetVainqueur() == joueur;
                 }
                 catch (System.InvalidOperationException)
