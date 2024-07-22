@@ -1,0 +1,109 @@
+@page
+@model WebApplication1.Pages.index
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match de tennis</title>
+
+    <script src="/static/vue-js-3.global.js"></script>
+
+    <link rel="stylesheet" href="/static/styles.css"/>
+</head>
+<body>
+  <div id="app">
+
+    <!-- <div v-if="isStarted" class="scoreboard"> -->
+    <div v-if="!loading && isStarted" class="scoreboard">
+      <h2>Match</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Joueur</th>
+            <th :colspan="setsCompleted().length">PREVIOUS SETS</th>
+            <th>Sets</th>
+            <th>Jeux</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="player-name">{{dataApp.joueurs[0].nom}} {{dataApp.joueurs[0].prenom}}</td>
+            <td v-if="setsCompleted().length == 0">-</td>
+            <td v-else v-for="(item, index) in setsCompleted()"> {{ gamesWin(1, setsCompleted(), index) }} </td>
+            <td class="score">{{ setsWin(1, setsCompleted()) }}</td>
+            <td class="score">{{ gamesWin(1, [setActuel], 0) }}</td>
+            <td class="score" v-if="setActuel.tieBreak.estTieBreak"> {{dataApp.joueurs[0].scoreTieBreak}} </td>
+            <td class="score" v-else> {{dataApp.j1}}{{
+              setActuel.jeux[setActuel.jeux.length-1].avantage.avantager &&
+              setActuel.jeux[setActuel.jeux.length-1].avantage.avantager.id == 1 ?
+              "Av" : ""}} </td>
+          </tr>
+          <tr>
+            <td class="player-name">{{dataApp.joueurs[1].nom}} {{dataApp.joueurs[1].prenom}}</td>
+            <td v-if="setsCompleted().length == 0">-</td>
+            <td v-else v-for="(item, index) in setsCompleted()"> {{ gamesWin(2, setsCompleted(), index) }} </td>
+            <td class="score">{{ setsWin(2, setsCompleted()) }}</td>
+            <td class="score">{{ gamesWin(2, [setActuel], 0) }}</td>
+            <td class="score" v-if="setActuel.tieBreak.estTieBreak"> {{dataApp.joueurs[1].scoreTieBreak}} </td>
+            <td class="score" v-else> {{dataApp.j2}}{{
+              setActuel.jeux[setActuel.jeux.length-1].avantage.avantager &&
+              setActuel.jeux[setActuel.jeux.length-1].avantage.avantager.id == 2 ?
+              "Av" : ""}} </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="controle">
+
+        <div class="scoreboard">
+
+          <template v-if="!dataApp.vanqueurMatch">
+            <div class="player">
+              <h2> 1. {{dataApp.joueurs[0].nom}} {{dataApp.joueurs[0].prenom}} </h2>
+              <button class="button" v-on:click="winPoint(1)" id="player1-button">Gangé Point</button>
+            </div>
+            <div class="player">
+              <h2> 2. {{dataApp.joueurs[1].nom}} {{dataApp.joueurs[1].prenom}} </h2>
+              <button class="button" v-on:click="winPoint(2)" id="player2-button">Gagné Point</button>
+          </template>
+          <h2 v-else>Vainqueur <b>{{dataApp.vanqueurMatch.nom }} {{dataApp.vanqueurMatch.prenom }} </b></h2>
+          <button class="button" v-on:click="isStarted = false" id="player2-button">Créer un nouveau match.</button>
+        </div>
+      </div>
+      
+    </div>
+
+    <template v-if="!isStarted">
+      <div class="controle">
+        <div class="player">
+          <h2>Joueur 1</h2>
+          <label for="player1-firstname">Prénom:</label>
+          <input type="text" v-model="player1.firstname" id="player1-firstname" class="input-field">
+          <br>
+          <label for="player1-lastname">Nom:</label>
+          <input type="text" v-model="player1.lastname" id="player1-lastname" class="input-field">
+        </div>
+        <div class="player">
+          <h2>Joueur 2</h2>
+          <label for="player2-firstname">Prénom:</label>
+          <input type="text" v-model="player2.firstname" id="player2-firstname" class="input-field">
+          <br>
+          <label for="player2-lastname">Nom:</label>
+          <input type="text" v-model="player2.lastname" id="player2-lastname" class="input-field">
+        </div>
+      </div>
+      <button class="button" v-on:click="createMatch()">Créer match</button>
+    </template>
+
+
+  </div>
+
+  <script src="./static/app.js"></script>
+</body>
+
+</html>
