@@ -11,8 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0"/>
+        <PackageReference Include="Selenium.WebDriver" Version="4.23.0" />
         <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57"/>
         <PackageReference Include="SpecFlow.xUnit" Version="3.9.22"/>
         <PackageReference Include="xunit" Version="2.4.1"/>
@@ -24,7 +24,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\JeuxTennisApi\JeuxTennisApi.csproj" />
+      <Compile Update="Features\IHMJeuTennis.feature.cs">
+        <DependentUpon>IHMJeuTennis.feature</DependentUpon>
+        <AutoGen>true</AutoGen>
+        <DesignTime>true</DesignTime>
+        <Visible>true</Visible>
+      </Compile>
     </ItemGroup>
 
 </Project>
