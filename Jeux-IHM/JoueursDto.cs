@@ -1,6 +1,6 @@
 using JeuxTennisApi;
 
-namespace WebApplication1.Pages;
+namespace JeuxIHM.Pages;
 
 public class JoueursDto
 {

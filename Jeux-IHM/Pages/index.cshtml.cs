@@ -1,7 +1,7 @@
 using JeuxTennisApi;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApplication1.Pages;
+namespace JeuxIHM.Pages;
 
 public class index : PageModel
 {

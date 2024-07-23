@@ -36,8 +36,7 @@ dotnet run
 ```
 
 ##### ▶️ Pour lancer les tests :
-
-3. Exécution de la spécification dans une autre invite de commande :
+1. Exécution de la spécification dans une autre invite de commande *(le test lance automatiquement Jeux-IHM et termine le processus à la fin)* :
 ```bash
 cd SpecFlowIHMJeuxTennis 
 dotnet build 

@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Features\IHMJeuTennis.feature.cs">
+      <Compile Update="Features\IHMJeuTennisLaunchAuto.feature.cs">
         <DependentUpon>IHMJeuTennis.feature</DependentUpon>
         <AutoGen>true</AutoGen>
         <DesignTime>true</DesignTime>

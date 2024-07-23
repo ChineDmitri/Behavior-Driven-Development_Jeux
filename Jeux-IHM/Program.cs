@@ -1,7 +1,5 @@
 using JeuxTennisApi;
-using Newtonsoft.Json;
-using WebApplication1;
-using WebApplication1.Pages;
+using JeuxIHM.Pages;
 using System.Text.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
