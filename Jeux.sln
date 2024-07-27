@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlechettesApi", "Flechettes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindApi", "MastermindApi\MastermindApi.csproj", "{80982CFA-E7A4-4ED6-8AA4-D6C039F1DC78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowMastermindApi", "SpecFlowMastermindApi\SpecFlowMastermindApi.csproj", "{767D824E-5A70-4C1A-A9F8-2BDAD1FF2618}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{80982CFA-E7A4-4ED6-8AA4-D6C039F1DC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80982CFA-E7A4-4ED6-8AA4-D6C039F1DC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80982CFA-E7A4-4ED6-8AA4-D6C039F1DC78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767D824E-5A70-4C1A-A9F8-2BDAD1FF2618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767D824E-5A70-4C1A-A9F8-2BDAD1FF2618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767D824E-5A70-4C1A-A9F8-2BDAD1FF2618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767D824E-5A70-4C1A-A9F8-2BDAD1FF2618}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
