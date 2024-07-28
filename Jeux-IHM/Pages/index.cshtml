@@ -70,6 +70,7 @@
             <div class="player">
               <h2> 2. {{dataApp.joueurs[1].nom}} {{dataApp.joueurs[1].prenom}} </h2>
               <button class="button" v-on:click="winPoint(2)" id="player2-button">Gagné Point</button>
+            </div>
           </template>
           <h2 v-else>Vainqueur <b>{{dataApp.vanqueurMatch.nom }} {{dataApp.vanqueurMatch.prenom }} </b></h2>
           <button class="button" v-on:click="isStarted = false" id="player2-button">Créer un nouveau match.</button>
