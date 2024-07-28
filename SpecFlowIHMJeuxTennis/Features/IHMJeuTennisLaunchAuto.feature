@@ -5,17 +5,17 @@ Feature: IHMJeuTennisLaunchAuto
         When Je clique "Créer match" pour
           | Nom      | Prenom |
           | Chine    | Dmitri |
-          | Medvedev | Dmitri |
+          | Medvedev | Daniil |
         Then Je dois avoir une vue "Match"
           | Joueur          | SETS PRÉCÉDENTS | Sets | Jeux | Points |
           | Chine Dmitri    | -               | 0    | 0    | 0      |
-          | Medvedev Dmitri | -               | 0    | 0    | 0      |
+          | Medvedev Daniil | -               | 0    | 0    | 0      |
 
     Scenario: Chauqe joueur ont gagné un point
         Then Je dois avoir une vue "Match"
           | Joueur          | SETS PRÉCÉDENTS | Sets | Jeux | Points |
           | Chine Dmitri    | -               | 0    | 0    | 0      |
-          | Medvedev Dmitri | -               | 0    | 0    | 0      |
+          | Medvedev Daniil | -               | 0    | 0    | 0      |
         When Je clique "Gagné point" pour
           | idJoueur |
           | 1        |
@@ -25,4 +25,4 @@ Feature: IHMJeuTennisLaunchAuto
         Then Je dois avoir une vue "Match"
           | Joueur          | SETS PRÉCÉDENTS | Sets | Jeux | Points |
           | Chine Dmitri    | -               | 0    | 0    | 15     |
-          | Medvedev Dmitri | -               | 0    | 0    | 15     |
+          | Medvedev Daniil | -               | 0    | 0    | 15     |

@@ -90,7 +90,7 @@ namespace SpecFlowIHMJeuxTennis.Features
                         "Dmitri"});
             table1.AddRow(new string[] {
                         "Medvedev",
-                        "Dmitri"});
+                        "Daniil"});
 #line 5
         testRunner.When("Je clique \"Créer match\" pour", ((string)(null)), table1, "When ");
 #line hidden
@@ -107,7 +107,7 @@ namespace SpecFlowIHMJeuxTennis.Features
                         "0",
                         "0"});
             table2.AddRow(new string[] {
-                        "Medvedev Dmitri",
+                        "Medvedev Daniil",
                         "-",
                         "0",
                         "0",
@@ -166,7 +166,7 @@ namespace SpecFlowIHMJeuxTennis.Features
                             "0",
                             "0"});
                 table3.AddRow(new string[] {
-                            "Medvedev Dmitri",
+                            "Medvedev Daniil",
                             "-",
                             "0",
                             "0",
@@ -201,7 +201,7 @@ namespace SpecFlowIHMJeuxTennis.Features
                             "0",
                             "15"});
                 table6.AddRow(new string[] {
-                            "Medvedev Dmitri",
+                            "Medvedev Daniil",
                             "-",
                             "0",
                             "0",
