@@ -8,10 +8,10 @@ Ce repository contient l'implémentation des *API* pour les jeux et les spécifi
 
 | Jeu                            | API              | SpecFlow       |
 |--------------------------------|------------------|------------------------------|
-| 🕹️ TicTacToe (morpion)         | TicTacToeApi     | SpecFlowIHMTicTacToeApi         |
-| 🎾 Partie de tennis (deux sets gagnants) | JeuxTennisApi    | SpecFlowJeuxTennisApi        |
-| 🎯 Fléchettes                  | FlechettesApi    | SpecFlowFlechettesApi           |
-| 🔍 Mastermind                  | MastermindApi    | SpecFlowMastermindApi           |
+| 🕹️ TicTacToe (morpion)         | TicTacToeApi ⌛ (en cours 🔨) | SpecFlowIHMTicTacToeApi ✅        |
+| 🎾 Partie de tennis (deux sets gagnants) | JeuxTennisApi ✅   | SpecFlowJeuxTennisApi ✅        |
+| 🎯 Fléchettes                  | FlechettesApi ⌛ (en cours 🔨) | SpecFlowFlechettesApi ✅          |
+| 🔍 Mastermind                  | MastermindApi ✅   | SpecFlowMastermindApi ✅          |
 
 ## 🚀 Dotnet utilisé : 6.0
 
