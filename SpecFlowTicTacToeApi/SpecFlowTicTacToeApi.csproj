@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Steps\" />
+      <ProjectReference Include="..\TicTacToeApi\TicTacToeApi.csproj" />
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ Ce repository contient l'implémentation des *API* pour les jeux et les spécifi
 
 | Jeu                                     | API                | Stat                  | SpecFlow                       | Stat |
 |-----------------------------------------|--------------------|-----------------------|--------------------------------|------|
-| 🕹️ TicTacToe (morpion)                 | TicTacToeApi       | ⌛ (en cours 🔨)       | SpecFlowIHMTicTacToeApi        | ✅   |
+| 🕹️ TicTacToe (morpion)                 | TicTacToeApi       | ✅                     | SpecFlowIHMTicTacToeApi        | ✅   |
 | 🎾 Partie de tennis (deux sets gagnants) | JeuxTennisApi      | ✅                     | SpecFlowJeuxTennisApi          | ✅   |
 | 🎯 Fléchettes                           | FlechettesApi      | ⌛ (en cours 🔨)       | SpecFlowFlechettesApi          | ✅   |
 | 🔍 Mastermind                           | MastermindApi      | ✅                     | SpecFlowMastermindApi          | ✅   |
